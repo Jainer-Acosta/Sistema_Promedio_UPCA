@@ -5,65 +5,81 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sistema de promedio UPCA</title>
 </head>
+
 <body>
+
     <h1>Sistema de promedio UPCA</h1>
 
     <form method="POST">
 
         <h2>Primer corte 40%</h2>
 
-        <label> Primera nota: </label>
-        <input type="number" name="nota1" step="0.01">
+        <label>Primera nota:</label>
+        <input type="number" name="nota1_primera" step="0.01" min="0" max="5" placeholder="Ej: 3.7">
+
         <br><br>
 
-        <label>Segunda nota: </label>
-        <input type="number" name="nota2" step="0.01">
+        <label>Segunda nota:</label>
+        <input type="number" name="nota2_primera" step="0.01" min="0" max="5" placeholder="Ej: 4.8">
+
         <br><br>
 
-        <label>Nota del parcial: </label>
-        <input type="number" name="parcial" step="0.01">
+        <label>Nota del parcial:</label>
+        <input type="number" name="parcial_primera" step="0.01" min="0" max="5" placeholder="Ej: 2.6">
+
         <br><br>
 
-        <button>Calcular</button>
-
-        {% if nota_final is not none %}
-
-            <h2>Nota acumulada: {{ nota_final }}</h2>
-            
-
-        {% endif %}
+        <button type="submit">Calcular primer corte</button>
 
     </form>
+
+
+    {% if nota_final_primera is not none %}
+
+        <h2>Nota del 40%: {{ nota_final_primera }}</h2>
+
+    {% endif %}
+
 
     <form method="POST">
 
-        <h2>segundo corte 60%</h2>
+        <h2>Segundo corte 60%</h2>
 
-        <label> Primera nota: </label>
-        <input type="number" name="nota1" step="0.01">
+        <label>Primera nota:</label>
+        <input type="number" name="nota1_segunda" step="0.01" min="0" max="5" placeholder="Ej: 2.5">
+
         <br><br>
 
-        <label>Segunda nota: </label>
-        <input type="number" name="nota2" step="0.01">
+        <label>Segunda nota:</label>
+        <input type="number" name="nota2_segunda" step="0.01" min="0" max="5" placeholder="Ej: 3.5">
+
         <br><br>
 
-        <label>Nota del parcial: </label>
-        <input type="number" name="parcial" step="0.01">
+        <label>Nota del parcial:</label>
+        <input type="number" name="parcial_segunda" step="0.01" min="0" max="5" placeholder="Ej: 1.5">
+
         <br><br>
 
-        <button>Calcular</button>
-
-        {% if nota_final is not none %}
-
-            <h2>Nota acumulada: {{ nota_final }}</h2>
-            
-
-        {% endif %}
+        <button type="submit">Calcular segundo corte</button>
 
     </form>
 
 
+    {% if nota_final_segunda is not none %}
 
+        <h2>Nota del 60%: {{ nota_final_segunda }}</h2>
+
+    {% endif %}
+
+    {% if nota_acumulada is not none %}
+
+        <h2>Nota acumulada del primer corte y el segundo corte: {{ nota_acumulada }}</h2>
+
+    {% endif %}
+    
+    <a href="/reset">
+        <button type="button">Reiniciar</button>
+    </a>
 
 </body>
 </html>
